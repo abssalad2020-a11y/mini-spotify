@@ -1,0 +1,312 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #121212;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+  background: #121212;
+}
+
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  padding: 28px 20px;
+  background: #000000;
+}
+
+.sidebar h1 {
+  margin-bottom: 40px;
+  color: #1ed760;
+  font-size: 25px;
+}
+
+.sidebar p {
+  padding: 12px 10px;
+  color: #b3b3b3;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.sidebar p:hover {
+  color: #ffffff;
+}
+
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 32px;
+  padding-bottom: 150px;
+  background: linear-gradient(
+    180deg,
+    #263b35 0,
+    #181818 340px,
+    #121212 600px
+  );
+}
+
+.content h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: 30px;
+}
+
+
+.content form {
+  display: flex;
+  gap: 12px;
+  max-width: 600px;
+  margin-bottom: 32px;
+}
+
+.content input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 18px;
+  border: 1px solid transparent;
+  border-radius: 25px;
+  outline: none;
+  background: #242424;
+  color: white;
+}
+
+.content input:focus {
+  border-color: #1ed760;
+}
+
+.content form button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  background: #1ed760;
+  color: #000000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.content form button:hover {
+  background: #3be477;
+}
+
+
+.song-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 18px;
+}
+
+.song {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: rgba(35, 35, 35, 0.85);
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.song:hover {
+  background: #333333;
+  transform: translateY(-3px);
+}
+
+.song img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.song span {
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+  color: #b3b3b3;
+  font-size: 13px;
+}
+
+.song strong {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+
+.player {
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 100px;
+  padding: 16px 28px;
+  border-top: 1px solid #333333;
+  background: #181818;
+}
+
+.now-playing {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  flex: 1;
+}
+
+.now-playing img {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.now-playing strong {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.now-playing p {
+  margin: 6px 0 0;
+  color: #b3b3b3;
+  font-size: 13px;
+}
+
+.player audio {
+  width: min(420px, 50%);
+}
+
+
+@media (max-width: 650px) {
+  .sidebar {
+    width: 135px;
+    padding: 16px 10px;
+  }
+
+  .sidebar h1 {
+    font-size: 19px;
+  }
+
+  .content {
+    padding: 20px 12px 130px;
+  }
+
+  .content h2 {
+    font-size: 23px;
+  }
+
+  .song-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .song {
+    padding: 9px;
+  }
+
+  .player {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .now-playing img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .player audio {
+    width: 48%;
+  }
+}
+
+
+
+.player {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.now-playing {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.now-playing img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.now-playing > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.now-playing strong {
+  display: block;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.player audio {
+  width: min(100%, 350px);
+  min-width: 0;
+}
+
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+
+  background: transparent;
+  color: #b3b3b3;
+
+  border: none;
+  border-radius: 6px;
+
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+
+  transition: background 0.2s, color 0.2s;
+}
+
+.sidebar button:hover {
+  background: #282828;
+  color: #ffffff;
+}
